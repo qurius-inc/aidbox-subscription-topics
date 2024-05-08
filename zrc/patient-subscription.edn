@@ -5,7 +5,7 @@
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
   :url "http://aidbox.app/SubscriptionTopic/patient-ethnicity"
   :resourceTrigger [{:resource "Patient"
-                     :fhirPathCriteria "extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').extension.where(valueCoding.code='2186-5').exists()"}]}
+                     :fhirPathCriteria "extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').extension.where(valueCoding.code='2135-2').exists()"}]}
 
  patient-topic-storage
  {:zen/tags #{fhir.topic-based-subscription/topic-storage}

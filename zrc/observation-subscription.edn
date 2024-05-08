@@ -1,0 +1,29 @@
+{ns observation-subscription
+ import #{aidbox}
+ 
+ observation-topic
+ {:zen/tags #{fhir.topic-based-subscription/topic-definition}
+  :url "http://aidbox.app/SubscriptionTopic/observations-status"
+  :resourceTrigger [{:resource "Observation"}]
+
+  :canFilterBy [{:resource        "Observation"
+                 :filterParameter "observation-status"
+                 :_fhirPath       "%current.status"
+                 :modifier        ["eq"]}]}
+ 
+ observation-topic-storage
+ {:zen/tags #{fhir.topic-based-subscription/topic-storage}
+  :storage-type fhir.topic-based-subscription/postgres
+  :timeout  1
+  :status-interval 10
+  :maxCount 100
+  :heartbeat-rate 120
+  :senders-number 2
+  :maxContent "full-resource"
+  :table-name "observation_topic"}
+ 
+ observation-topic-service
+ {:zen/tags #{aidbox/service}
+  :engine fhir.topic-based-subscription/change-data-capture-service-engine
+  :topic-definition observation-topic
+  :topic-storage observation-topic-storage}}

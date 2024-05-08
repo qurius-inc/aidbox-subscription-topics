@@ -1,0 +1,6 @@
+{ns system
+ import #{aidbox patient-subscription}
+ 
+ box
+ {:zen/tags #{aidbox/system} 
+  :services {:patient-subscription patient-subscription/patient-topic-service}}}

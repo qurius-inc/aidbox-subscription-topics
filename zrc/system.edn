@@ -1,6 +1,7 @@
 {ns system
- import #{aidbox patient-subscription}
+ import #{aidbox patient-subscription allergyintolerance-subscription}
  
  box
  {:zen/tags #{aidbox/system} 
-  :services {:patient-subscription patient-subscription/patient-topic-service}}}
+  :services {:patient-subscription patient-subscription/patient-topic-service
+             :allergyintolerance-subscription allergyintolerance-subscription/allergyintolerance-topic-service}}}

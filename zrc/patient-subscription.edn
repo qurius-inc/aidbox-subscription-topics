@@ -3,7 +3,7 @@
 
  patient-topic
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
-  :url "http://aidbox.app/SubscriptionTopic/patient-ethnicity"
+  :url "http://aidbox.app/SubscriptionTopic/patient"
   :resourceTrigger [{:resource "Patient" }]}
 
  patient-topic-storage

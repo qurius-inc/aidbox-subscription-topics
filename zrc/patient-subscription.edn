@@ -1,9 +1,9 @@
 {ns patient-subscription
  import #{aidbox}
 
- patient-topic
+ patient-topic-lane
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
-  :url "http://aidbox.app/SubscriptionTopic/patient"
+  :url "http://aidbox.app/SubscriptionTopic/patient-lane"
   :resourceTrigger [{:resource "Patient" }]}
 
  patient-topic-storage
@@ -15,10 +15,10 @@
   :heartbeat-rate 120
   :senders-number 2
   :maxContent "full-resource"
-  :table-name "patient_topic"}
+  :table-name "patient_topic_lane"}
 
  patient-topic-service
  {:zen/tags #{aidbox/service}
   :engine fhir.topic-based-subscription/change-data-capture-service-engine
-  :topic-definition patient-topic
+  :topic-definition patient-topic-lane
   :topic-storage patient-topic-storage}}

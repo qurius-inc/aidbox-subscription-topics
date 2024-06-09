@@ -1,6 +1,7 @@
 {ns system
- import #{aidbox d6-patient-topic}
+ import #{aidbox d6-patient-topic d6-patient-2-topic}
  
  box
  {:zen/tags #{aidbox/system} 
-  :services {:patient-subscription d6-patient-topic/d6-patient-topic-service }}}
+  :services {:patient-subscription d6-patient-topic/d6-patient-topic-service
+             :patient-2-subscription d6-patient-2-topic/d6-patient-2-topic-service

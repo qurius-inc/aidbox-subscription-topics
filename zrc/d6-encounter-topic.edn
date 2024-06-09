@@ -1,0 +1,30 @@
+{ns d6-encounter-topic
+ import #{aidbox}
+
+ d6-encounter-topic
+ {:zen/tags #{fhir.topic-based-subscription/topic-definition}
+  :url "http://aidbox.app/SubscriptionTopic/d6-encounter"
+  :resourceTrigger [{:resource "Encounter" }]
+  :canFilterBy [{
+    :resource "Encounter"
+    :filterParameter "profile"
+    :_fhirPath "meta.profile"
+    :modifier ["eq"]
+  }]}
+
+ d6-encounter-topic-storage
+ {:zen/tags #{fhir.topic-based-subscription/topic-storage}
+  :storage-type fhir.topic-based-subscription/postgres
+  :timeout  1
+  :status-interval 10
+  :maxCount 100
+  :heartbeat-rate 120
+  :senders-number 2
+  :maxContent "full-resource"
+  :table-name "d6_encounter_topic"}
+
+ d6-encounter-topic-service
+ {:zen/tags #{aidbox/service}
+  :engine fhir.topic-based-subscription/change-data-capture-service-engine
+  :topic-definition d6-encounter-topic
+  :topic-storage d6-encounter-topic-storage}}

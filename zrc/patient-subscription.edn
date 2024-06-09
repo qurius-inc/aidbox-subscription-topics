@@ -1,10 +1,15 @@
 {ns patient-subscription
  import #{aidbox}
 
- patient-topic-lane
+ patient-topic
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
-  :url "http://aidbox.app/SubscriptionTopic/patient-lane"
-  :resourceTrigger [{:resource "Patient" }]}
+  :url "http://aidbox.app/SubscriptionTopic/patient"
+  :resourceTrigger [{:resource "Patient" }]
+  :canFilterBy [{
+    :resource "Patient"
+    :filterParameter "profile"
+    :_fhirPath "meta.profile"
+  }]}
 
  patient-topic-storage
  {:zen/tags #{fhir.topic-based-subscription/topic-storage}
@@ -15,10 +20,10 @@
   :heartbeat-rate 120
   :senders-number 2
   :maxContent "full-resource"
-  :table-name "patient_topic_lane"}
+  :table-name "patient_topic"}
 
  patient-topic-service
  {:zen/tags #{aidbox/service}
   :engine fhir.topic-based-subscription/change-data-capture-service-engine
-  :topic-definition patient-topic-lane
+  :topic-definition patient-topic
   :topic-storage patient-topic-storage}}

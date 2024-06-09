@@ -3,5 +3,4 @@
  
  box
  {:zen/tags #{aidbox/system} 
-  :services {:patient-subscription patient-subscription/patient-topic-service
-             :condition-subscription condition-subscription/condition-topic-service}}}
+  :services {:patient-subscription patient-subscription/patient-topic-service }}}

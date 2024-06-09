@@ -9,6 +9,7 @@
     :resource "Patient"
     :filterParameter "profile"
     :_fhirPath "meta.profile"
+    :modifier ["eq"]
   }]}
 
  d6-patient-topic-storage

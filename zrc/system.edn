@@ -1,7 +1,8 @@
 {ns system
- import #{aidbox d6-patient-topic d6-encounter-topic}
+ import #{aidbox d6-patient-topic d6-encounter-topic d6-observation-topic}
  
  box
  {:zen/tags #{aidbox/system}
   :services {:patient-subscription d6-patient-topic/d6-patient-topic-service
-             :encounter-subscription d6-encounter-topic/d6-encounter-topic-service }}}
+             :encounter-subscription d6-encounter-topic/d6-encounter-topic-service
+             :observation-subscription d6-observation-topic/d6-observation-topic-service}}}

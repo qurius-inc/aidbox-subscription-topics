@@ -1,4 +1,4 @@
-{ns lab-report-subscription
+{ns d6-observation-topic
  import #{aidbox}
 
  d6-observation-topic

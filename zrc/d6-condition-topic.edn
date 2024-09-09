@@ -1,4 +1,4 @@
-{ns condition-subscription
+{ns d6-condition-topic
  import #{aidbox}
 
  condition-topic

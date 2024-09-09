@@ -1,20 +1,20 @@
-{ns lab-report-subscription
+{ns d6-document-reference-topic
  import #{aidbox}
 
- d6-observation-topic
+ d6-document-reference-topic
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
-  :url "http://aidbox.app/SubscriptionTopic/d6-observation"
-  :resourceTrigger [{:resource "Observation" }]
-  :canFilterBy [{:resource "Observation"
+  :url "http://aidbox.app/SubscriptionTopic/d6-document-reference"
+  :resourceTrigger [{:resource "document-reference" }]
+  :canFilterBy [{:resource "DocumentReference"
                  :filterParameter "profile"
                  :_fhirPath "meta.profile"
                  :modifier ["eq"]}
-                {:resource "Observation"
+                {:resource "DocumentReference"
                  :filterParameter "category"
                  :_fhirPath "category"
                  :modifier ["eq"]}]}
 
- d6-observation-topic-storage
+ d6-document-reference-topic-storage
  {:zen/tags #{fhir.topic-based-subscription/topic-storage}
   :storage-type fhir.topic-based-subscription/postgres
   :timeout  1
@@ -23,10 +23,10 @@
   :heartbeat-rate 120
   :senders-number 2
   :maxContent "full-resource"
-  :table-name "d6_observation_topic"}
+  :table-name "d6_document_reference_topic"}
 
- d6-observation-topic-service
+ d6-document-reference-topic-service
  {:zen/tags #{aidbox/service}
   :engine fhir.topic-based-subscription/change-data-capture-service-engine
-  :topic-definition d6-observation-topic
-  :topic-storage d6-observation-topic-storage}}
+  :topic-definition d6-document-reference-topic
+  :topic-storage d6-document-reference-topic-storage}}

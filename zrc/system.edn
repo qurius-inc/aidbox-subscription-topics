@@ -5,4 +5,5 @@
  {:zen/tags #{aidbox/system}
   :services {:patient-subscription d6-patient-topic/d6-patient-topic-service
              :encounter-subscription d6-encounter-topic/d6-encounter-topic-service
-             :observation-subscription d6-observation-topic/d6-observation-topic-service}}}
+             :observation-subscription d6-observation-topic/d6-observation-topic-service
+             :document-reference-subscription d6-document-reference-topic/d6-document-reference-topic-service}}}

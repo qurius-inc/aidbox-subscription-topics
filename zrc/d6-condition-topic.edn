@@ -1,9 +1,9 @@
 {ns d6-condition-topic
  import #{aidbox}
 
- condition-topic
+ d6-condition-topic
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
-  :url "http://aidbox.app/SubscriptionTopic/condition"
+  :url "http://aidbox.app/SubscriptionTopic/d6-condition"
   :resourceTrigger [{:resource "Condition" }]
   :canFilterBy [{:resource "Condition"
                  :filterParameter "profile"
@@ -14,7 +14,7 @@
                  :_fhirPath "category"
                   :modifier ["eq"]}]}
 
- condition-topic-storage
+ d6-condition-topic-storage
  {:zen/tags #{fhir.topic-based-subscription/topic-storage}
   :storage-type fhir.topic-based-subscription/postgres
   :timeout  1
@@ -23,10 +23,10 @@
   :heartbeat-rate 120
   :senders-number 2
   :maxContent "full-resource"
-  :table-name "condition_topic"}
+  :table-name "d6_condition_topic"}
 
- condition-service
+ d6-condition-service
  {:zen/tags #{aidbox/service}
   :engine fhir.topic-based-subscription/change-data-capture-service-engine
-  :topic-definition condition-topic
-  :topic-storage condition-topic-storage}}
+  :topic-definition d6-condition-topic
+  :topic-storage d6-condition-topic-storage}}

@@ -4,7 +4,7 @@
  d6-document-reference-topic
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
   :url "http://aidbox.app/SubscriptionTopic/d6-document-reference"
-  :resourceTrigger [{:resource "document-reference" }]
+  :resourceTrigger [{:resource "DocumentReference" }]
   :canFilterBy [{:resource "DocumentReference"
                  :filterParameter "profile"
                  :_fhirPath "meta.profile"

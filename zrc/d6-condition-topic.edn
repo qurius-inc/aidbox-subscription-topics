@@ -25,7 +25,7 @@
   :maxContent "full-resource"
   :table-name "d6_condition_topic"}
 
- d6-condition-service
+ d6-condition-topic-service
  {:zen/tags #{aidbox/service}
   :engine fhir.topic-based-subscription/change-data-capture-service-engine
   :topic-definition d6-condition-topic

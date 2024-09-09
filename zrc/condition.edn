@@ -1,0 +1,32 @@
+{ns condition-subscription
+ import #{aidbox}
+
+ condition-topic
+ {:zen/tags #{fhir.topic-based-subscription/topic-definition}
+  :url "http://aidbox.app/SubscriptionTopic/condition"
+  :resourceTrigger [{:resource "Condition" }]
+  :canFilterBy [{:resource "Condition"
+                 :filterParameter "profile"
+                 :_fhirPath "meta.profile"
+                 :modifier ["eq"]}
+                {:resource "Condition"
+                 :filterParameter "category"
+                 :_fhirPath "category"
+                  :modifier ["eq"]}]}
+
+ condition-topic-storage
+ {:zen/tags #{fhir.topic-based-subscription/topic-storage}
+  :storage-type fhir.topic-based-subscription/postgres
+  :timeout  1
+  :status-interval 10
+  :maxCount 100
+  :heartbeat-rate 120
+  :senders-number 2
+  :maxContent "full-resource"
+  :table-name "condition_topic"}
+
+ condition-service
+ {:zen/tags #{aidbox/service}
+  :engine fhir.topic-based-subscription/change-data-capture-service-engine
+  :topic-definition condition-topic
+  :topic-storage condition-topic-storage}}

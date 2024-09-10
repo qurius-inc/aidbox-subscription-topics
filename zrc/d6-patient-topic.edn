@@ -8,7 +8,7 @@
   :canFilterBy [{
     :resource "Patient"
     :filterParameter "profile"
-    :_fhirPath "meta.profile"
+    :_fhirPath "%current.meta.profile[0]"
     :modifier ["eq"]
   }]}
 

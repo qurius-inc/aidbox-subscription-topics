@@ -7,11 +7,11 @@
   :resourceTrigger [{:resource "Condition" }]
   :canFilterBy [{:resource "Condition"
                  :filterParameter "profile"
-                 :_fhirPath "meta.profile"
+                 :_fhirPath "%current.meta.profile[0]"
                  :modifier ["eq"]}
                 {:resource "Condition"
                  :filterParameter "category"
-                 :_fhirPath "category"
+                 :_fhirPath "%current.category[0].coding[0].code"
                   :modifier ["eq"]}]}
 
  d6-condition-topic-storage

@@ -12,6 +12,14 @@
                 {:resource "Condition"
                  :filterParameter "category"
                  :_fhirPath "%current.category[0].coding[0].code"
+                  :modifier ["eq"]}
+                {:resource "Condition"
+                 :filterParameter "problem-list-item"
+                 :_fhirPath "%current.category.where(coding.where(code = 'problem-list-item')).exists()"
+                  :modifier ["eq"]}
+                {:resource "Condition"
+                 :filterParameter "cedars-har-diagnosis"
+                 :_fhirPath "%current.category.where(coding.where(code = 'cedars-har-diagnosis')).exists()"
                   :modifier ["eq"]}]}
 
  d6-condition-topic-storage

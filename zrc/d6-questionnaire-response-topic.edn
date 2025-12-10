@@ -1,0 +1,30 @@
+{ns d6-questionnaire-response-topic
+ import #{aidbox}
+
+ d6-questionnaire-response-topic
+ {:zen/tags #{fhir.topic-based-subscription/topic-definition}
+  :url "http://aidbox.app/SubscriptionTopic/d6-questionnaire-response"
+  :resourceTrigger [{:resource "QuestionnaireResponse" }]
+  :canFilterBy [{
+    :resource "QuestionnaireResponse"
+    :filterParameter "profile"
+    :_fhirPath "%current.meta.profile[0]"
+    :modifier ["eq"]
+  }]}
+
+ d6-questionnaire-response-topic-storage
+ {:zen/tags #{fhir.topic-based-subscription/topic-storage}
+  :storage-type fhir.topic-based-subscription/postgres
+  :timeout  1
+  :status-interval 10
+  :maxCount 100
+  :heartbeat-rate 120
+  :senders-number 2
+  :maxContent "full-resource"
+  :table-name "d6_questionnaire_response_topic"}
+
+ d6-questionnaire-response-topic-service
+ {:zen/tags #{aidbox/service}
+  :engine fhir.topic-based-subscription/change-data-capture-service-engine
+  :topic-definition d6-questionnaire-response-topic
+  :topic-storage d6-questionnaire-response-topic-storage}}

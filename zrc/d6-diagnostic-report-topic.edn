@@ -5,17 +5,14 @@
  {:zen/tags #{fhir.topic-based-subscription/topic-definition}
   :url "http://aidbox.app/SubscriptionTopic/d6-diagnostic-report"
   :resourceTrigger [{:resource "DiagnosticReport" }]
-  :canFilterBy [{
-    :resource "DiagnosticReport"
-    :filterParameter "profile"
-    :_fhirPath "%current.meta.profile[0]"
-    :modifier ["eq"]
-  }, {
-      :resource "DiagnosticReport"
-      :filterParameter "category"
-      :_fhirPath "%current.category[0].coding[0].code"
-      :modifier ["eq"]
-  }]}
+  :canFilterBy [{:resource "DiagnosticReport"
+                 :filterParameter "profile"
+                 :_fhirPath "%current.meta.profile[0]"
+                 :modifier ["eq"]}
+                {:resource "DiagnosticReport"
+                 :filterParameter "category"
+                 :_fhirPath "%current.category[0].coding[0].code"
+                 :modifier ["eq"]}]}
 
  d6-diagnostic-report-topic-storage
  {:zen/tags #{fhir.topic-based-subscription/topic-storage}

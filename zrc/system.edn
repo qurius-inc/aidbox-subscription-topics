@@ -1,5 +1,5 @@
 {ns system
- import #{aidbox d6-patient-topic d6-encounter-topic d6-observation-topic d6-document-reference-topic d6-condition-topic d6-medication-request-topic d6-allergy-intolerance-topic d6-procedure-topic d6-practitioner-topic}
+ import #{aidbox d6-patient-topic d6-encounter-topic d6-observation-topic d6-document-reference-topic d6-condition-topic d6-medication-request-topic d6-allergy-intolerance-topic d6-procedure-topic d6-practitioner-topic d6-diagnostic-report-topic d6-questionnaire-response-topic}
  
  box
  {:zen/tags #{aidbox/system}
@@ -11,4 +11,6 @@
              :medication-request-subscription d6-medication-request-topic/d6-medication-request-topic-service
              :allergy-intolerance-subscription d6-allergy-intolerance-topic/d6-allergy-intolerance-topic-service
              :procedure-subscription d6-procedure-topic/d6-procedure-topic-service
+             :questionnaire-response-subscription d6-questionnaire-response-topic/d6-questionnaire-response-topic-service
+             :diagnostic-report-subscription d6-diagnostic-report-topic/d6-diagnostic-report-topic-service
              :practitioner-subscription d6-practitioner-topic/d6-practitioner-topic-service}}}

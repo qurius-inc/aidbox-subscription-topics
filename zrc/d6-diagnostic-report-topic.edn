@@ -10,6 +10,11 @@
     :filterParameter "profile"
     :_fhirPath "%current.meta.profile[0]"
     :modifier ["eq"]
+  }, {
+      :resource "DiagnosticReport"
+      :filterParameter "category"
+      :_fhirPath "%current.category[0].coding[0].code"
+      :modifier ["eq"]
   }]}
 
  d6-diagnostic-report-topic-storage

@@ -1,0 +1,35 @@
+{ns d6-diagnostic-report-topic
+ import #{aidbox}
+
+ d6-diagnostic-report-topic
+ {:zen/tags #{fhir.topic-based-subscription/topic-definition}
+  :url "http://aidbox.app/SubscriptionTopic/d6-diagnostic-report"
+  :resourceTrigger [{:resource "DiagnosticReport" }]
+  :canFilterBy [{
+    :resource "DiagnosticReport"
+    :filterParameter "profile"
+    :_fhirPath "%current.meta.profile[0]"
+    :modifier ["eq"]
+  }, {
+      :resource "DiagnosticReport"
+      :filterParameter "category"
+      :_fhirPath "%current.category[0].coding[0].code"
+      :modifier ["eq"]
+  }]}
+
+ d6-diagnostic-report-topic-storage
+ {:zen/tags #{fhir.topic-based-subscription/topic-storage}
+  :storage-type fhir.topic-based-subscription/postgres
+  :timeout  1
+  :status-interval 10
+  :maxCount 100
+  :heartbeat-rate 120
+  :senders-number 2
+  :maxContent "full-resource"
+  :table-name "d6_diagnostic_report_topic"}
+
+ d6-diagnostic-report-topic-service
+ {:zen/tags #{aidbox/service}
+  :engine fhir.topic-based-subscription/change-data-capture-service-engine
+  :topic-definition d6-diagnostic-report-topic
+  :topic-storage d6-diagnostic-report-topic-storage}}
